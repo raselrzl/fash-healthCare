@@ -13,6 +13,7 @@ export const createUser=async (user:CreateUserParams)=>{
             undefined, 
             user.name
         )
+      return parseStringify(newUser);
     } catch (error:any) {
         if(error && error?.code===409){
             const documents=await users.list([
@@ -79,6 +80,10 @@ export const getPatient = async (userId: string) => {
       PATIENT_COLLECTION_ID!,
       [Query.equal("userId", [userId])]
     );
+    if (patients.documents.length === 0) {
+      console.error("No patient found with the given userId.");
+      return null; // Or handle as needed
+    }
 
     return parseStringify(patients.documents[0]);
   } catch (error) {

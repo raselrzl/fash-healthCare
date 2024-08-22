@@ -1,3 +1,4 @@
+
 import AppointmentForm from "@/components/forms/AppointmentForm";
 import PatientForm from "@/components/forms/PatientForm";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,7 @@ export default async function NewAppointment({params:{userId}}:SearchParamProps)
          <AppointmentForm 
           type="create"
           userId={userId}
-          patientId={patient.$id}
+          patientId={patient?.$id}
          />
           
             <p className="copyright mt-10 py-12">
