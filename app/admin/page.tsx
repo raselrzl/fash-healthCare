@@ -1,13 +1,18 @@
 import { StatCard } from "@/components/StatCard";
+import {columns, Payment} from "@/components/table/columns";
+import {DataTable} from "@/components/table/DataTable";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-/*
-import { columns } from "@/components/table/columns";
-import { DataTable } from "@/components/table/DataTable";
- */
+async function getData(): Promise<Payment[]> {
+    // Fetch data from your API here.
+    return [
+        
+    ]
+  }
 const Admin = async () => {
+  const data = await getData()
   const appointments = await getRecentAppointmentList();
 
   return (
@@ -55,7 +60,8 @@ const Admin = async () => {
           />
         </section>
 
-        {/* <DataTable columns={columns} data={appointments.documents} /> */}
+        <DataTable columns={columns} data={appointments.documents} />
+        
       </main>
     </div>
   );
